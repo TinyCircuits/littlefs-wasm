@@ -5,7 +5,7 @@ To build on Linux, publish to GitHub, and then consume with NPM, do the followin
 2. `cd littlefs-wasm`
 3. `git checkout emulator`
 4. `cd emsdk` (https://emscripten.org/docs/getting_started/downloads.html)
-5. `git pull`
+5. `git submodule update --init --recursive`
 6. `./emsdk install latest`
 7. `./emsdk activate latest`
 8. `source ./emsdk_env.sh`
