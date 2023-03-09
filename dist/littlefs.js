@@ -1,6 +1,6 @@
 
 var littlefs = (() => {
-  var _scriptDir = typeof document !== 'undefined' && document.currentScript ? document.currentScript.src : undefined;
+  var _scriptDir = import.meta.url;
   
   return (
 function(littlefs) {
@@ -1184,10 +1184,15 @@ function isFileURI(filename) {
 
 // end include: URIUtils.js
 var wasmBinaryFile;
+if (Module['locateFile']) {
   wasmBinaryFile = 'littlefs.wasm';
   if (!isDataURI(wasmBinaryFile)) {
     wasmBinaryFile = locateFile(wasmBinaryFile);
   }
+} else {
+  // Use bundler-friendly `new URL(..., import.meta.url)` pattern; works in browsers too.
+  wasmBinaryFile = new URL('littlefs.wasm', import.meta.url).toString();
+}
 
 function getBinary(file) {
   try {
@@ -1856,9 +1861,4 @@ run();
 }
 );
 })();
-if (typeof exports === 'object' && typeof module === 'object')
-  module.exports = littlefs;
-else if (typeof define === 'function' && define['amd'])
-  define([], function() { return littlefs; });
-else if (typeof exports === 'object')
-  exports["littlefs"] = littlefs;
+export default littlefs;

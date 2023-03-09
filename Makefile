@@ -8,7 +8,7 @@ EXPORTS=_lfs_format,_lfs_mount,_lfs_unmount,_lfs_remove,_lfs_rename,_lfs_stat,_l
 	_lfs_file_opencfg,_lfs_file_close,_lfs_file_sync,_lfs_file_read,_lfs_file_write,_lfs_file_seek,_lfs_file_truncate,_lfs_file_tell,\
 	_lfs_file_rewind,_lfs_file_size,_lfs_dir_open,_lfs_dir_close,_lfs_dir_read,_lfs_dir_seek,_lfs_dir_tell,_lfs_dir_rewind,\
 	_lfs_fs_size,_lfs_fs_traverse,_new_lfs_config,_new_lfs,_lfs_write_file,_free,_malloc,_lfs_mkdir
-CFLAGS = -s MODULARIZE=1 -s 'EXPORT_NAME="littlefs"' -s EXPORT_ES6=0 -I littlefs \
+CFLAGS = -s MODULARIZE=1 -s 'EXPORT_NAME="littlefs"' -s EXPORT_ES6=1 -I littlefs \
 	-s 'EXPORTED_FUNCTIONS=$(EXPORTS)' \
 	-s EXPORTED_RUNTIME_METHODS="['addFunction', 'cwrap', 'ccall']" -s ALLOW_TABLE_GROWTH=1 -s ASSERTIONS=0
 

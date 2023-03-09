@@ -32,7 +32,7 @@ const struct lfs_config *new_lfs_config(void *read, void *prog, void *erase, voi
 
 void lfs_write_file(lfs_t *lfs, char *name, void *data, size_t size) {
     lfs_file_t file;
-    lfs_file_open(lfs, &file, name, LFS_O_RDWR | LFS_O_CREAT);
+    lfs_file_open(lfs, &file, name, LFS_O_RDWR | LFS_O_CREAT | LFS_O_TRUNC);
     lfs_file_write(lfs, &file, data, size);
     lfs_file_close(lfs, &file);
 }
